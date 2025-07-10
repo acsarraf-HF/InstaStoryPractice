@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
+
+    @StateObject var viewModel: HomeViewModel
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,9 +19,12 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            viewModel.loadUsers()
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    HomeView(viewModel: HomeViewModel(userService: UserService()))
 }

@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct StoryClonePracticeApp: App {
+    private let userService = UserService()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(
+                viewModel: HomeViewModel(
+                    userService: userService
+                )
+            )
         }
     }
 }
