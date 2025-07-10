@@ -4,24 +4,27 @@ struct StoryListView: View {
     let viewData: StoryListViewData
     let onItemTapped: (Int) -> Void
     let elementSize: CGFloat
+    let elementSpacing: CGFloat
 
     init(
         viewData: StoryListViewData,
         onItemTapped: @escaping (Int) -> Void,
-        elementSize: CGFloat = 80
+        elementSize: CGFloat = 80,
+        elementSpacing: CGFloat = 32
     ) {
         self.viewData = viewData
         self.onItemTapped = onItemTapped
         self.elementSize = elementSize
+        self.elementSpacing = elementSpacing
     }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
+            HStack(spacing: elementSpacing) {
                 ForEach(viewData.stories) { storyData in
                     UserAvatarView(
                         viewData: storyData,
-                        size: 80,
+                        size: elementSize,
                         hasBeenSelected: .constant(false) // Update this later
                     )
                     .onTapGesture {
@@ -31,6 +34,7 @@ struct StoryListView: View {
             }
         }
         .padding(.horizontal)
+        .contentMargins(.all, 8) // look into removing this
     }
 }
 

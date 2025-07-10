@@ -6,6 +6,7 @@
 - Load user data ✅
 - Create UserAvatarUI (Unseen/seen state ✅, gradient ✅, circular image ✅, animation on hold and release ❌)
 - Create horizontal list that contains them ✅
+- Load more on scroll ❌ - prioritize story view screen first
 
 ## StoryViewScreen
 

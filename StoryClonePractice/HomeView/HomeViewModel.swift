@@ -7,6 +7,7 @@ protocol HomeViewModelProtocol {
     func getUsersFromPage(_ page: Int)
     func loadNextPage()
     func loadAllUsers()
+    func userViewed(id: Int)
 }
 
 class HomeViewModel: ObservableObject, HomeViewModelProtocol {
@@ -15,6 +16,7 @@ class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     @Published var isLoading: Bool = false
     @Published var currentPage: Int = 0
     @Published var hasNextPage: Bool = false
+    @Published var viewedUserIds: Set<Int> = []
 
     private let userService: UserServiceProtocol
 
@@ -65,6 +67,10 @@ class HomeViewModel: ObservableObject, HomeViewModelProtocol {
             errorMesssage = error.localizedDescription
         }
         isLoading = false
+    }
+
+    func userViewed(id: Int) {
+        viewedUserIds.insert(id)
     }
 }
 

@@ -42,6 +42,7 @@ struct UserAvatarView: View {
 
 
             Text(viewData.name)
+                .font(.system(size: 12))
         }
     }
 }

@@ -36,9 +36,22 @@
 		AA25A6FB2E201E550063AA73 /* istagram-screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "istagram-screenshot.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AA25A7072E202E030063AA73 /* Exceptions for "StoryClonePractice" folder in "StoryClonePractice" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AA25A6AA2E200E3F0063AA73 /* StoryClonePractice */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AA25A6AD2E200E3F0063AA73 /* StoryClonePractice */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AA25A7072E202E030063AA73 /* Exceptions for "StoryClonePractice" folder in "StoryClonePractice" target */,
+			);
 			path = StoryClonePractice;
 			sourceTree = "<group>";
 		};
@@ -411,6 +424,7 @@
 				DEVELOPMENT_TEAM = F595A8TCY5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StoryClonePractice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -439,6 +453,7 @@
 				DEVELOPMENT_TEAM = F595A8TCY5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StoryClonePractice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

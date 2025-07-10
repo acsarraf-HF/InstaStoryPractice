@@ -6,12 +6,20 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            StoryListView(
+                viewData: StoryListViewData(
+                    users: viewModel.users,
+                    viewedUserIds: viewModel.viewedUserIds
+                ),
+                onItemTapped: { userId in
+                    print("tapped user \(userId)")
+                    viewModel.userViewed(id: userId)
+                },
+                elementSize: 80,
+                elementSpacing: 24
+            )
+            Spacer()
         }
-        .padding()
         .onAppear {
             viewModel.loadUsers()
         }
