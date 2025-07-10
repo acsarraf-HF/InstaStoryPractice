@@ -2,7 +2,7 @@ import SwiftUI
 
 struct UserAvatarView: View {
     let viewData: UserAvatarViewData
-    var size: CGFloat = 64 // Ideally sizing would be abstracted to some design system
+    var size: CGFloat = 80 // Ideally sizing would be abstracted to some design system
 
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
@@ -23,6 +23,19 @@ struct UserAvatarView: View {
                     emptyView
                 }
             }
+            .overlay(
+                Circle()
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Gradient(colors: [.pink, .orange]),
+                            startPoint: .topTrailing,
+                            endPoint: .bottomLeading
+                        ),
+                        lineWidth: size * 0.03
+                    )
+                    .padding(-size * 0.06)
+            )
+
 
             Text(viewData.name)
         }
