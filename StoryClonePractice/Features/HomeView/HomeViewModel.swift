@@ -19,6 +19,7 @@ class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     @Published var viewedUserIds: Set<Int> = []
     @Published var navigateToStory = false
     @Published var selectedUserId: Int?
+    @Published var showStoryView = false
 
     private let userService: UserServiceProtocol
 
@@ -74,7 +75,8 @@ class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     func userViewed(id: Int) {
         viewedUserIds.insert(id)
         selectedUserId = id
-        navigateToStory = true
+        // Not using navigation anymore
+        // navigateToStory = true
     }
 }
 

@@ -3,9 +3,10 @@ import SwiftUI
 struct HomeView: View {
 
     @StateObject var viewModel: HomeViewModel
+    @Namespace private var animation
 
     var body: some View {
-        NavigationStack {
+        ZStack {
             VStack {
                 StoryListView(
                     viewData: StoryListViewData(
@@ -16,9 +17,11 @@ struct HomeView: View {
                         print("tapped user \(userId)")
                         viewModel.userViewed(id: userId)
                         viewModel.selectedUserId = userId
+                        viewModel.showStoryView = true
                     },
                     elementSize: 80,
                     elementSpacing: 24,
+                    namespace: animation,
                     selectedId: viewModel.selectedUserId
                 )
                 Spacer()
@@ -26,12 +29,21 @@ struct HomeView: View {
             .onAppear {
                 viewModel.loadUsers()
             }
-            .navigationDestination(isPresented: $viewModel.navigateToStory) {
+            
+            // Story view with hero animation
+            if viewModel.showStoryView, let selectedId = viewModel.selectedUserId {
                 StoryView(
                     viewModel: StoryViewModel(
                         storyService: StoryService()
-                    )
+                    ),
+                    namespace: animation,
+                    userId: selectedId,
+                    onDismiss: {
+                        viewModel.showStoryView = false
+                    }
                 )
+                .transition(.identity)
+                .zIndex(1)
             }
         }
     }

@@ -5,6 +5,7 @@ struct StoryListView: View {
     let onItemTapped: (Int) -> Void
     let elementSize: CGFloat
     let elementSpacing: CGFloat
+    let namespace: Namespace.ID
     let selectedId: Int?
 
     init(
@@ -12,12 +13,14 @@ struct StoryListView: View {
         onItemTapped: @escaping (Int) -> Void,
         elementSize: CGFloat = 80,
         elementSpacing: CGFloat = 32,
+        namespace: Namespace.ID,
         selectedId: Int? = nil
     ) {
         self.viewData = viewData
         self.onItemTapped = onItemTapped
         self.elementSize = elementSize
         self.elementSpacing = elementSpacing
+        self.namespace = namespace
         self.selectedId = selectedId
     }
 
@@ -28,8 +31,12 @@ struct StoryListView: View {
                     UserAvatarView(
                         viewData: storyData,
                         size: elementSize,
-                        hasBeenSelected: .constant(false) // Update this later
                         hasBeenSelected: .constant(storyData.hasBeenSelected)
+                    )
+                    .heroAnimation(
+                        id: storyData.id,
+                        namespace: namespace,
+                        isActive: selectedId == storyData.id
                     )
                     .onTapGesture {
                         onItemTapped(storyData.id)
@@ -43,17 +50,25 @@ struct StoryListView: View {
 }
 
 #Preview {
-    // Sample data for preview
-    let users = [
-        User(id: 1, name: "Test1", profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=1")!),
-        User(id: 2, name: "Test2", profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=2")!),
-        User(id: 3, name: "Test3", profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=3")!)
-    ]
+    struct PreviewWrapper: View {
+        @Namespace var previewNamespace
+        
+        var body: some View {
+            let users = [
+                User(id: 1, name: "Test1", profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=1")!),
+                User(id: 2, name: "Test2", profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=2")!),
+                User(id: 3, name: "Test3", profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=3")!)
+            ]
 
-    let viewData = StoryListViewData(users: users, viewedUserIds: [1])
-
-    StoryListView(
-        viewData: viewData,
-        onItemTapped: { _ in }
-    ).contentMargins(20)
+            let viewData = StoryListViewData(users: users, viewedUserIds: [1])
+            
+            return StoryListView(
+                viewData: viewData,
+                onItemTapped: { _ in },
+                namespace: previewNamespace
+            ).contentMargins(20)
+        }
+    }
+    
+    return PreviewWrapper()
 }
