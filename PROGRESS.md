@@ -1,10 +1,10 @@
-# Main tasks
+# Main tasks ✅ ❌
 
 ## StoryListScreen
 
-- Create models for data (Done)
-- Load user data (Done)
-- Create UserAvatarUI (Unseen/seen state, gradient, circular image, animation on hold and release)
+- Create models for data ✅
+- Load user data ✅
+- Create UserAvatarUI (Unseen/seen state ✅, gradient ✅, circular image ✅, animation on hold and release ❌)
 - Create horizontal list that contains them
 
 ## StoryViewScreen
