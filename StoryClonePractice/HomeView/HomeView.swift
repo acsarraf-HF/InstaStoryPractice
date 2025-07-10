@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  StoryClonePractice
-//
-//  Created by Alan Sarraf on 10.07.25.
-//
-
 import SwiftUI
 
 struct HomeView: View {
