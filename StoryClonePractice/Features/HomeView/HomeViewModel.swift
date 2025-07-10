@@ -13,10 +13,12 @@ protocol HomeViewModelProtocol {
 class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     @Published var users: [User] = []
     @Published var errorMesssage: String?
-    @Published var isLoading: Bool = false
-    @Published var currentPage: Int = 0
-    @Published var hasNextPage: Bool = false
+    @Published var isLoading = false
+    @Published var currentPage = 0
+    @Published var hasNextPage = false
     @Published var viewedUserIds: Set<Int> = []
+    @Published var navigateToStory = false
+    @Published var selectedUserId: Int?
 
     private let userService: UserServiceProtocol
 
@@ -71,6 +73,8 @@ class HomeViewModel: ObservableObject, HomeViewModelProtocol {
 
     func userViewed(id: Int) {
         viewedUserIds.insert(id)
+        selectedUserId = id
+        navigateToStory = true
     }
 }
 
