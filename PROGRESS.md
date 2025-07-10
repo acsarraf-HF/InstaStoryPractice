@@ -10,10 +10,10 @@
 
 ## StoryViewScreen
 
-- Create a screen to view a story
-- Story should have a like unlike functionality
-  - Animation on like and unlike
-- Navigate between different stories with gestures (if i have enough time)
+- Create a screen to view a story ✅ 
+- Story should have a like unlike functionality ✅ 
+  - Animation on like and unlike ✅ 
+- Navigate between different stories with gestures (if i have enough time)  ❌
 
 ## Persistence
 
