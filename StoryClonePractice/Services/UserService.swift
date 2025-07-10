@@ -1,6 +1,5 @@
 import Foundation
 protocol UserServiceProtocol {
-    func loadUsers() throws -> UserResponse
     func getAllUsers() throws -> [User]
     func getUsersFromPage(_ page: Int) throws -> [User]
 }
@@ -23,21 +22,6 @@ enum UserServiceError: Error {
 }
 
 class UserService: UserServiceProtocol {
-    func loadUsers() throws -> UserResponse {
-        guard let url = Bundle.main.url(forResource: "users", withExtension: "json", subdirectory: "Resources") else {
-            print("User File Not Found")
-            throw UserServiceError.fileNotFound
-        }
-
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            return try decoder.decode(UserResponse.self, from: data)
-        } catch {
-            throw UserServiceError.decodingError
-        }
-    }
-
     func getAllUsers() throws -> [User] {
         let response = try loadUsers()
         return response.pages.flatMap { $0.users }
@@ -49,5 +33,22 @@ class UserService: UserServiceProtocol {
             throw UserServiceError.invalidPageIndex
         }
         return page.users
+    }
+}
+
+private extension UserService {
+    func loadUsers() throws -> UserResponse {
+        guard let url = Bundle.main.url(forResource: "users", withExtension: "json") else {
+            print("User File Not Found")
+            throw UserServiceError.fileNotFound
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            return try decoder.decode(UserResponse.self, from: data)
+        } catch {
+            throw UserServiceError.decodingError
+        }
     }
 }
