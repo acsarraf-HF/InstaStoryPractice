@@ -1,8 +1,16 @@
 import SwiftUI
 
+// Probably could improve how there are a bunch of constant multipliers across the file 
 struct UserAvatarView: View {
     let viewData: UserAvatarViewData
     var size: CGFloat = 80 // Ideally sizing would be abstracted to some design system
+    @Binding var hasBeenSelected: Bool
+
+    init(viewData: UserAvatarViewData, size: CGFloat, hasBeenSelected: Binding<Bool>) {
+        self.viewData = viewData
+        self.size = size
+        self._hasBeenSelected = hasBeenSelected
+    }
 
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
@@ -26,11 +34,7 @@ struct UserAvatarView: View {
             .overlay(
                 Circle()
                     .strokeBorder(
-                        LinearGradient(
-                            gradient: Gradient(colors: [.pink, .orange]),
-                            startPoint: .topTrailing,
-                            endPoint: .bottomLeading
-                        ),
+                        borderGradient(selected: hasBeenSelected),
                         lineWidth: size * 0.03
                     )
                     .padding(-size * 0.06)
@@ -52,6 +56,21 @@ private extension UserAvatarView {
             .foregroundStyle(.gray)
             .clipShape(.circle)
     }
+
+    @ViewBuilder
+    private func borderGradient(selected: Bool) -> LinearGradient {
+        hasBeenSelected ?
+            LinearGradient(
+                gradient: Gradient(colors: [.gray.opacity(0.5), .gray]),
+                startPoint: .top,
+                endPoint: .bottom
+            ) :
+            LinearGradient(
+                gradient: Gradient(colors: [.pink, .orange]),
+                startPoint: .topTrailing,
+                endPoint: .bottomLeading
+            )
+    }
 }
 
 #Preview {
@@ -62,5 +81,8 @@ private extension UserAvatarView {
         profilePictureUrl: URL(string: "https://i.pravatar.cc/300?u=1")!
     )
     let viewData = UserAvatarViewData(user: user)
-    UserAvatarView(viewData: viewData, size: 100)
+    HStack(spacing: 20) {
+        UserAvatarView(viewData: viewData, size: 100, hasBeenSelected: .constant(true))
+        UserAvatarView(viewData: viewData, size: 100, hasBeenSelected: .constant(false))
+    }
 }
