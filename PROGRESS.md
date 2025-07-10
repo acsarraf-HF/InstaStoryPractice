@@ -17,11 +17,11 @@
 
 ## Persistence
 
-- Liking a story should persist
+- Liking a story should persist ❌
 
-## Nice to have:
-- Light/Dark Mode functionality
-- Shimmer effect when avatar view is loading
+## Nice to have: 
+- Light/Dark Mode functionality ❌
+- Shimmer effect when avatar view is loading ❌
 
 ## Testing
 

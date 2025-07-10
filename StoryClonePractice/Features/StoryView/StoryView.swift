@@ -65,6 +65,7 @@ struct StoryView: View {
             .heroAnimation(id: userId, namespace: namespace, isActive: true)
             .modifier(HeroTransition(isPresented: isAnimationComplete))
         }
+        .contentMargins(20)
         .onAppear {
             viewModel.loadStories()
 
