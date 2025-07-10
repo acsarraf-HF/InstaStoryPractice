@@ -31,8 +31,10 @@ private extension StoryView {
             Spacer()
             ProgressView()
                 .scaleEffect(1.5)
+                .foregroundColor(.white)
             Text("Loading story...")
                 .padding(.top, 16)
+                .foregroundColor(.white)
             Spacer()
         }
     }
@@ -47,6 +49,7 @@ private extension StoryView {
             Text(message)
                 .padding()
                 .multilineTextAlignment(.center)
+                .foregroundColor(.white)
             Button("Try Again") {
                 viewModel.loadStories()
             }
@@ -67,6 +70,7 @@ private extension StoryView {
                 switch phase {
                 case .empty:
                     ProgressView()
+                        .foregroundColor(.white)
                 case .success(let image):
                     image
                         .resizable()
@@ -92,7 +96,7 @@ private extension StoryView {
                     }) {
                         Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
                             .font(.title)
-                            .foregroundColor(viewModel.isFavorite ? .red : .primary)
+                            .foregroundColor(viewModel.isFavorite ? .red : .white)
                     }
                     .padding(.trailing)
                 }
