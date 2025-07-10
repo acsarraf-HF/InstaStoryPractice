@@ -2,9 +2,9 @@
 
 ## StoryListScreen
 
-- Create models for data
+- Create models for data (Done)
+- Load user data (Done)
 - Create UserAvatarUI (Unseen/seen state, gradient, circular image, animation on hold and release)
-- Load user data
 - Create horizontal list that contains them
 
 ## StoryViewScreen
@@ -17,6 +17,10 @@
 ## Persistence
 
 - Liking a story should persist
+
+## Nice to have:
+- Light/Dark Mode functionality
+- Shimmer effect when avatar view is loading
 
 ## Testing
 

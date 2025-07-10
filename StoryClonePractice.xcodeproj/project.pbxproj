@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AA25A6EF2E201BD10063AA73 /* PROCESS.md in Resources */ = {isa = PBXBuildFile; fileRef = AA25A6EE2E201BD10063AA73 /* PROCESS.md */; };
+		AA25A6FC2E201E550063AA73 /* istagram-screenshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA25A6FB2E201E550063AA73 /* istagram-screenshot.jpg */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AA25A6B92E200E400063AA73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		AA25A6AB2E200E3F0063AA73 /* StoryClonePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryClonePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA25A6B82E200E400063AA73 /* StoryClonePracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoryClonePracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA25A6C22E200E400063AA73 /* StoryClonePracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoryClonePracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA25A6EE2E201BD10063AA73 /* PROCESS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PROCESS.md; sourceTree = "<group>"; };
+		AA25A6FB2E201E550063AA73 /* istagram-screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "istagram-screenshot.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +86,8 @@
 				AA25A6BB2E200E400063AA73 /* StoryClonePracticeTests */,
 				AA25A6C52E200E400063AA73 /* StoryClonePracticeUITests */,
 				AA25A6AC2E200E3F0063AA73 /* Products */,
+				AA25A6EE2E201BD10063AA73 /* PROCESS.md */,
+				AA25A6FB2E201E550063AA73 /* istagram-screenshot.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA25A6FC2E201E550063AA73 /* istagram-screenshot.jpg in Resources */,
+				AA25A6EF2E201BD10063AA73 /* PROCESS.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
