@@ -5,17 +5,20 @@ struct StoryListView: View {
     let onItemTapped: (Int) -> Void
     let elementSize: CGFloat
     let elementSpacing: CGFloat
+    let selectedId: Int?
 
     init(
         viewData: StoryListViewData,
         onItemTapped: @escaping (Int) -> Void,
         elementSize: CGFloat = 80,
-        elementSpacing: CGFloat = 32
+        elementSpacing: CGFloat = 32,
+        selectedId: Int? = nil
     ) {
         self.viewData = viewData
         self.onItemTapped = onItemTapped
         self.elementSize = elementSize
         self.elementSpacing = elementSpacing
+        self.selectedId = selectedId
     }
 
     var body: some View {
@@ -26,6 +29,7 @@ struct StoryListView: View {
                         viewData: storyData,
                         size: elementSize,
                         hasBeenSelected: .constant(false) // Update this later
+                        hasBeenSelected: .constant(storyData.hasBeenSelected)
                     )
                     .onTapGesture {
                         onItemTapped(storyData.id)

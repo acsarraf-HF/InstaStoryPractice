@@ -18,7 +18,8 @@ struct HomeView: View {
                         viewModel.selectedUserId = userId
                     },
                     elementSize: 80,
-                    elementSpacing: 24
+                    elementSpacing: 24,
+                    selectedId: viewModel.selectedUserId
                 )
                 Spacer()
             }
